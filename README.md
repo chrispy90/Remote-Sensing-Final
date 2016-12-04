@@ -16,4 +16,4 @@ This project will be comparing the how well machine learning classifiers compare
 
 >6.) Run the Support Vector Machine Classifier
 
->7.) Compute accuracy for each classifier with a confussion matrix
+>7.) Compute accuracy for each classifier with a confusion matrix
