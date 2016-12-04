@@ -19,6 +19,8 @@ This project will be comparing the how well machine learning classifiers compare
 >> Make two subsets of the centroids (Subset Features Tool)
 
 >> Ensure no points overlap within each subset or between the two (Select by Location Tool)
+>>>> Total Training sites: 1199
+>>>> Total Validation sites: 600
 
 >> Clip out section of the NLCD raster that the Landsat image covers (CLip Tool)
 
