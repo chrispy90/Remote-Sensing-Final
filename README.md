@@ -12,21 +12,34 @@ This project will be comparing the how well machine learning classifiers compare
 
 
 # Data Prep
->> Convert Landsat 8 images to polygons (Raster to polygon Tool)
+> Convert Landsat 8 images to polygons (Raster to polygon Tool)
 
->> Convert the polygons to centroids (Features to Points Tool -o as shapefile)
+> Convert the polygons to centroids (Features to Points Tool -o as shapefile)
 
->> Make two subsets of the centroids (Subset Features Tool)
+> Make two subsets of the centroids (Subset Features Tool)
 
->> Ensure no points overlap within each subset or between the two (Select by Location Tool)
->>>> Total Training sites: 1199
->>>> Total Validation sites: 600
+> Ensure no points overlap within each subset or between the two (Select by Location Tool)
 
->> Clip out section of the NLCD raster that the Landsat image covers (CLip Tool)
+>> Total Training sites: 1199
 
->> Reclassify the clipped NLCD raster into 4 classes: 1) Water 2) Urban 3) Bare Soil 4) Vegetation (Reclassify Tool)
+>> Total Validation sites: 600
 
->> Add known land cover classification to points via the reclassifed NLCD raster (Extract Multi Values to Points Tool)
+> Clip out section of the NLCD raster that the Landsat image covers (CLip Tool)
 
->> Remove extra fields in the training and validation points
+> Reclassify the clipped NLCD raster into 4 classes: 1) Water 2) Urban 3) Bare Soil 4) Vegetation (Reclassify Tool)
+
+> Add known land cover classification to points via the reclassifed NLCD raster (Extract Multi Values to Points Tool)
+
+> Remove extra fields in the training and validation points
+
+> Create a composite of the following Landsat bands: 1 through 7 (Image Analysis window -o Compsite.tif)
+
+> Create a shapefile to use to clip the Composite Landsat image so that the No data cells are removed (Image Analysis window: Clip button)
+
+
+# Analysis
+
+> Traditional supervised classifier algorithm: Maximum Likelihood Classification
+* Generate a signature file to feed classifier
+* Run Maximum Likliehood Classification Tool
 
