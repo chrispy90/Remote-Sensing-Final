@@ -1,12 +1,6 @@
 # Remote-Sensing-Final
 This project will be comparing the how well machine learning classifiers compare to traditional supervised classifiers. This prject will be using Landsat 8 scenes. The 2011 National Land Cover Dataset will be used for both training and validation of the algorithms. ESRI's ArcGIS for Desktop 10.4 will be used for this analysis.
 
-#Steps
->1.) Run a traditional supervised classifier algorithm: Maximum Likelihood Classification
-
->2.) Run the Random Trees Classifier 
-
->3.) Run the Support Vector Machine Classifier
 
 >4.) Compute accuracy for each classifier with a confusion matrix
 
@@ -20,9 +14,9 @@ This project will be comparing the how well machine learning classifiers compare
 
 > Ensure no points overlap within each subset or between the two (Select by Location Tool)
 
->> Total Training sites: 1199
+* Total Training sites: 1199
 
->> Total Validation sites: 600
+* Total Validation sites: 600
 
 > Clip out section of the NLCD raster that the Landsat image covers (CLip Tool)
 
@@ -40,6 +34,16 @@ This project will be comparing the how well machine learning classifiers compare
 # Analysis
 
 > Traditional supervised classifier algorithm: Maximum Likelihood Classification
-* Generate a signature file to feed classifier
+* Generate a signature file to feed classifier (feed in training sites)
 * Run Maximum Likliehood Classification Tool
+
+> Random tree Classifier
+* Train classifier
+* Run classify Tool
+
+> Support Vector Machine Classifier
+* Train classifier
+* Run classify Tool
+
+> Compute accuracy for each classifier with a confusion matrix
 
