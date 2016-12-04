@@ -44,3 +44,9 @@ Create a shapefile to use to clip the Composite Landsat image so that the No dat
 
 > Compute accuracy for each classifier with a confusion matrix
 
+
+[Video explaining easy error matrix creation](https://www.youtube.com/watch?v=9dGjuEQie7Y)
+
+
+![picture alt](https://thumbs.gfycat.com/FirsthandSingleAlaskajingle-size_restricted.gif "Stats feelings")
+
