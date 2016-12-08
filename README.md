@@ -11,13 +11,25 @@ Make two subsets of the centroids (Subset Features Tool)
 
 Ensure no points overlap within each subset or between the two (Select by Location Tool)
 
-* Total Training sites: 1199
+* Total Training sites: 7000
 
-* Total Validation sites: 600
+* Total Validation sites: 3000
+
+Remove points with a value of -9999 (NLCD no data value)
 
 Clip out section of the NLCD raster that the Landsat image covers (CLip Tool)
 
-Reclassify the clipped NLCD raster into 4 classes: 1) Water 2) Urban 3) Bare Soil 4) Vegetation (Reclassify Tool)
+Reclassify the clipped NLCD raster: (Reclassify Tool)
+	Water (11, 12)
+	Developed (21, 22, 23, 24)
+	Barren (31)
+	Veg 
+		Forest (41, 42, 43)
+		Shrubland (51, 52)
+		Herbaceous (71, 72, 73, 74)
+		Planted/ Cultivated (81, 82)
+	Wetlands (90, 95)
+
 
 Add known land cover classification to points via the reclassifed NLCD raster (Extract Multi Values to Points Tool)
 
@@ -32,7 +44,9 @@ Create a shapefile to use to clip the Composite Landsat image so that the No dat
 
 > Traditional supervised classifier algorithm: Maximum Likelihood Classification
 * Generate a signature file to feed classifier (feed in training sites)
+	Load bands individually: bands 1 - 7
 * Run Maximum Likliehood Classification Tool
+	Load bands individually: bands 1 - 7
 
 > Random tree Classifier
 * Train classifier
