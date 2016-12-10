@@ -28,6 +28,7 @@ Reclassify the clipped NLCD raster: (Reclassify Tool)
 * Class 1: Water (11, 12)
 * Class 2: Developed (21, 22, 23, 24)
 * Class 3: Barren (31)
+
 ####Veg 
 * Class 4: Forest (41, 42, 43)
 * Class 5: Shrubland (51, 52)
@@ -54,7 +55,8 @@ Create a shapefile to use to clip the Composite Landsat image so that the No dat
   * Load bands individually: bands 1 - 7
 
 ## Random tree Classifier
-* Train classifier
+1.) Train classifier
+  * Max number of trees: 100, Max tree depth: 30, Max nummber of samples per class: 700
 * Run classify Tool
 
 ## Support Vector Machine Classifier
@@ -62,12 +64,14 @@ Create a shapefile to use to clip the Composite Landsat image so that the No dat
   * Load the training point buffers into the Training Sample Manager on the Classifcation Toolbar and save as a Feature Class in Geodatabase
   * Removed class 3 (barren soil)
   * Train SVM (Train Support Vector Machine Classifier Tool)
+    100 samples per class
 	
 2.) Run classify Tool
 
 ## Compute accuracy for each classifier with a confusion matrix
 Max: Run extract multi value to point with Max Classed raster and validation points
-   Had to remove class 3
+
+  Had to remove class 3
 
   Export to Excel
   Create Pivot table
@@ -83,6 +87,12 @@ ROWS | VALUES
 		 	
 
 Overall accuracy formula from pivot table: (sum of diagonal / # of total points) * 100
+
+Classifier | Accuracy
+--- | ---
+Maximum Likelihood | 59.29 %
+Support Vector Machine | 63.23 %
+Randome Trees | 63.20 %
 
 
 [Video explaining easy error matrix creation](https://www.youtube.com/watch?v=9dGjuEQie7Y)
