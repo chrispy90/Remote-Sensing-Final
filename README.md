@@ -24,15 +24,15 @@ Make buffers into multipart polygons (Dissolve Tool)
 Clip out section of the NLCD raster that the Landsat image covers (CLip Tool)
 
 Reclassify the clipped NLCD raster: (Reclassify Tool)
-	Class 1: Water (11, 12)
-	Class 2: Developed (21, 22, 23, 24)
-	Class 3: Barren (31) ****** Had to Remove in order to run Max Likeliehood Classification
-	Veg 
-		Class 4: Forest (41, 42, 43)
-		Class 5: Shrubland (51, 52)
-		Class 6: Herbaceous (71, 72, 73, 74)
-		Class 7: Planted/ Cultivated (81, 82)
-	Class 8: Wetlands (90, 95)
+	* Class 1: Water (11, 12)
+	* Class 2: Developed (21, 22, 23, 24)
+	* Class 3: Barren (31)
+	*Veg 
+		* Class 4: Forest (41, 42, 43)
+		* Class 5: Shrubland (51, 52)
+		* Class 6: Herbaceous (71, 72, 73, 74)
+		* Class 7: Planted/ Cultivated (81, 82)
+	* Class 8: Wetlands (90, 95)
 
 
 Add known land cover classification to points via the reclassifed NLCD raster (Extract Multi Values to Points Tool)
@@ -59,19 +59,26 @@ Create a shapefile to use to clip the Composite Landsat image so that the No dat
 > Support Vector Machine Classifier
 * Train classifier
 	1.) load the training point buffers into the Training Sample Manager on the Classifcation Toolbar and save as a Feature Class in Geodatabase
-	2.) Train SVM (Train Support Vector Machine Classifier Tool)
+	2.) Removed class 3 (barren soil)
+	3.) Train SVM (Train Support Vector Machine Classifier Tool)
 	#Note only ran the 3000 validation points through, will need to convert to buffers and remove class 3 (barren soil)
 * Run classify Tool
 
 > Compute accuracy for each classifier with a confusion matrix
 	Max: Run extract multi value to point with Max Classed raster and validation points
+		Had to remove class 3
 		 Export to Excel
 		 Create Pivot table
-		 	#FILTERS        #COLUMNS
-		 	BLANK           Classified values
 
-		 	#ROWS           #VALUES
-		 	Known values    Count of classified values
+		FILTERS | COLUMNS
+	        --- | --- 
+		   Blank| Classified Values
+		
+		ROWS | VALUES
+		 --- | ---
+		 Known Values | Count of Classified Values
+
+		 	
 
 		Overall accuracy formula from pivot table: (sum of diagonal / # of total points) * 100
 
