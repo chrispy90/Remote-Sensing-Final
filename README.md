@@ -49,9 +49,9 @@ Create a shapefile to use to clip the Composite Landsat image so that the No dat
 
 ## Traditional supervised classifier algorithm: Maximum Likelihood Classification
 1.) Generate a signature file to feed classifier (feed in training sites)
-  *Load bands individually: bands 1 - 7
+  * Load bands individually: bands 1 - 7
 2.) Run Maximum Likliehood Classification Tool
-  *Load bands individually: bands 1 - 7
+  * Load bands individually: bands 1 - 7
 
 ## Random tree Classifier
 * Train classifier
@@ -67,10 +67,10 @@ Create a shapefile to use to clip the Composite Landsat image so that the No dat
 
 ## Compute accuracy for each classifier with a confusion matrix
 Max: Run extract multi value to point with Max Classed raster and validation points
-... Had to remove class 3
+   Had to remove class 3
 
-.. Export to Excel
-.. Create Pivot table
+  Export to Excel
+  Create Pivot table
 
 FILTERS | COLUMNS
     --- | --- 
