@@ -28,12 +28,12 @@ Reclassify the clipped NLCD raster: (Reclassify Tool)
 * Class 1: Water (11, 12)
 * Class 2: Developed (21, 22, 23, 24)
 * Class 3: Barren (31)
-* Veg 
-..* Class 4: Forest (41, 42, 43)
-..* Class 5: Shrubland (51, 52)
-..* Class 6: Herbaceous (71, 72, 73, 74)
-..* Class 7: Planted/ Cultivated (81, 82)
-..* Class 8: Wetlands (90, 95)
+####Veg 
+* Class 4: Forest (41, 42, 43)
+* Class 5: Shrubland (51, 52)
+* Class 6: Herbaceous (71, 72, 73, 74)
+* Class 7: Planted/ Cultivated (81, 82)
+* Class 8: Wetlands (90, 95)
 
 
 Add known land cover classification to points via the reclassifed NLCD raster (Extract Multi Values to Points Tool)
@@ -48,10 +48,10 @@ Create a shapefile to use to clip the Composite Landsat image so that the No dat
 # Analysis
 
 ## Traditional supervised classifier algorithm: Maximum Likelihood Classification
-* Generate a signature file to feed classifier (feed in training sites)
-..*Load bands individually: bands 1 - 7
-* Run Maximum Likliehood Classification Tool
-..*Load bands individually: bands 1 - 7
+1.) Generate a signature file to feed classifier (feed in training sites)
+  *Load bands individually: bands 1 - 7
+2.) Run Maximum Likliehood Classification Tool
+  *Load bands individually: bands 1 - 7
 
 ## Random tree Classifier
 * Train classifier
@@ -59,14 +59,14 @@ Create a shapefile to use to clip the Composite Landsat image so that the No dat
 
 ## Support Vector Machine Classifier
 1.) Train classifier
-..* Load the training point buffers into the Training Sample Manager on the Classifcation Toolbar and save as a Feature Class in Geodatabase
-..* Removed class 3 (barren soil)
-..* Train SVM (Train Support Vector Machine Classifier Tool)
+  * Load the training point buffers into the Training Sample Manager on the Classifcation Toolbar and save as a Feature Class in Geodatabase
+  * Removed class 3 (barren soil)
+  * Train SVM (Train Support Vector Machine Classifier Tool)
 	
 2.) Run classify Tool
 
 ## Compute accuracy for each classifier with a confusion matrix
-.. Max: Run extract multi value to point with Max Classed raster and validation points
+Max: Run extract multi value to point with Max Classed raster and validation points
 ... Had to remove class 3
 
 .. Export to Excel
