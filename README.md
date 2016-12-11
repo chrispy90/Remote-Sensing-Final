@@ -3,24 +3,7 @@ This project will be comparing the how well machine learning classifiers compare
 
 
 # Data Prep
-Convert Landsat 8 images to polygons (Raster to polygon Tool)
-
-Convert the polygons to centroids (Features to Points Tool -o as shapefile)
-
-Make two subsets of the centroids (Subset Features Tool)
-
-Ensure no points overlap within each subset or between the two (Select by Location Tool)
-
-* Total Training sites: 7000
-
-* Total Validation sites: 3000
-
-Remove points with a value of -9999 and 0 (NLCD no data value)
-
-Buffer points with 10 meters (Buffer tool)
-
-Make buffers into multipart polygons (Dissolve Tool)
-
+## NLCD
 Clip out section of the NLCD raster that the Landsat image covers (CLip Tool)
 
 Reclassify the clipped NLCD raster: (Reclassify Tool)
@@ -36,23 +19,49 @@ Reclassify the clipped NLCD raster: (Reclassify Tool)
 * Class 7: Planted/ Cultivated (81, 82)
 * Class 8: Wetlands (90, 95)
 
+## Make Training and validation points
+1.) Convert Landsat 8 images to polygons (Raster to polygon Tool)
 
-Add known land cover classification to points via the reclassifed NLCD raster (Extract Multi Values to Points Tool)
+2.) Convert the polygons to centroids (Features to Points Tool -o as shapefile)
 
-Remove extra fields in the training and validation points
+3.) Make two subsets of the centroids (Subset Features Tool)
 
-Create a composite of the following Landsat bands: 1 through 7 (Image Analysis window -o Compsite.tif)
+4.) Ensure no points overlap within each subset or between the two (Select by Location Tool)
 
-Create a shapefile to use to clip the Composite Landsat image so that the No data cells are removed (Image Analysis window: Clip button)
+  * Total Training sites: 7000
+
+  * Total Validation sites: 3000
+
+5.) Remove points with a value of -9999 and 0 (NLCD no data value)
+
+6.) Buffer points with 10 meters (Buffer tool)
+
+7.) Make buffers into multipart polygons (Dissolve Tool)
+
+8.) Load buffers into the Training Sample Manager and click the save button (Image Classification Toolbar)
+
+9.) Add known land cover classification to points via the reclassifed NLCD raster (Extract Multi Values to Points Tool)
+
+10.) Remove extra fields in the training and validation points
+
+## Landsat 8 Data
+1.) Load bands 1 through 7 into ArcMap and open the Image analysis window
+
+2.) Create a shapefile to use to clip the Composite Landsat image so that the No data cells are removed (Image Analysis Window: Clip button)
+
+3.) Composite and save as a TIF (Iamage Analysis Window: Save button)
 
 
 # Analysis
 
-## Traditional supervised classifier algorithm: Maximum Likelihood Classification
+NOTE: had to remove class 3 (barren soil) becuase it would skew the classifier for some reason. As a result, Class 3 was removed for this entire analysis
+
+## Maximum Likelihood Classification
 1.) Generate a signature file to feed classifier (feed in training sites)
-  * Load bands individually: bands 1 - 7
+  * Load bands individually: bands 1 - 7 (use th clipped versions of these from Landsat data prep step 2)
 2.) Run Maximum Likliehood Classification Tool
-  * Load bands individually: bands 1 - 7
+  * Load bands individually: bands 1 - 7 (use th clipped versions of these from Landsat data prep step 2)
+
 
 ## Random tree Classifier
 1.) Train classifier
@@ -69,9 +78,7 @@ Create a shapefile to use to clip the Composite Landsat image so that the No dat
 2.) Run classify Tool
 
 ## Compute accuracy for each classifier with a confusion matrix
-Max: Run extract multi value to point with Max Classed raster and validation points
 
-  Had to remove class 3
 
   Export to Excel
   Create Pivot table
@@ -79,7 +86,7 @@ Max: Run extract multi value to point with Max Classed raster and validation poi
 FILTERS | COLUMNS
     --- | --- 
    Blank| Classified Values
-
+   --- | ---
 ROWS | VALUES
  --- | ---
  Known Values | Count of Classified Values
