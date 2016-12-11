@@ -79,21 +79,25 @@ NOTE: had to remove class 3 (barren soil) becuase it would skew the classifier f
 
 ## Compute accuracy for each classifier with a confusion matrix
 
+1.) Load a your validation points and extract classified value (Extract Multi Value Tool)
 
-  Export to Excel
-  Create Pivot table
+2.) Export validation points to Excel (Table to excel tool)
 
-FILTERS | COLUMNS
-    --- | --- 
-   Blank| Classified Values
-   --- | ---
-ROWS | VALUES
- --- | ---
- Known Values | Count of Classified Values
+3.) Highlight the column with the value extracted from the NLCD and the column with the value extracted from the classified image
 
-		 	
+4.) Create pivot table in excel with following table guide
 
-Overall accuracy formula from pivot table: (sum of diagonal / # of total points) * 100
+
+FILTERS | COLUMNS | ROWS | VALUES
+    --- | --- | --- | ---
+   Blank| Classified Values | NLCD Values | Count of Classified Values
+   
+5.) Calculate overall accuracy
+  * (Sum of diagonals/ Total number of observations)*100
+ 
+# Findings
+
+## Louisiana Delta
 
 Classifier | Accuracy
 --- | ---
