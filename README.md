@@ -103,7 +103,7 @@ Classifier | Accuracy
 --- | ---
 Maximum Likelihood | 59.29 %
 Support Vector Machine | 63.23 %
-Randome Trees | 63.20 %
+Random Trees | 63.20 %
 
 
 [Video explaining easy error matrix creation](https://www.youtube.com/watch?v=9dGjuEQie7Y)
